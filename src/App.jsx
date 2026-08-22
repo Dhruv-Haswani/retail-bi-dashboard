@@ -5,6 +5,8 @@ import KpiCard from './components/KpiCard'
 import Modal from './components/Modal'
 import { useState } from 'react'
 import Dropdown from './components/Dropdown'
+import SalesForm from './components/SalesForm'
+import SalesData from './components/SalesData'
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -18,8 +20,9 @@ function App() {
 
         <main className="p-6">
           <div className="mb-6 flex justify-end">
-  <Dropdown />
-</div>
+            <Dropdown />
+          </div>
+
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             <KpiCard title="Total Revenue" value="₹12.45L" />
             <KpiCard title="Total Orders" value="8,426" />
@@ -28,16 +31,24 @@ function App() {
           </div>
 
           <SalesOverview />
+
           <button
             onClick={() => setIsModalOpen(true)}
             className="mt-6 rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
           >
             View Sales Details
           </button>
-        
+
+          <SalesForm />
+
+          <SalesData />
         </main>
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   )
 }
